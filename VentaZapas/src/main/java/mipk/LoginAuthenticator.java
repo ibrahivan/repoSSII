@@ -47,7 +47,7 @@ public class LoginAuthenticator extends HttpServlet {
 			ok=true;
 		}
 				
-		if (ok) response.sendRedirect("bienvenido.jsp");
+		if (ok) response.sendRedirect("principal.jsp");
 		else response.sendRedirect("cerrarsesion.jsp");
 
 	}
