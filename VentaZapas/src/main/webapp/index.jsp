@@ -45,6 +45,11 @@ function compruebaalfan(campo, evento) {
 		return true;
 	}
 }
+<%String incorrect=request.getParameter("var");
+if (incorrect==null)
+	incorrect=" ";
+	else%> //capturamos si la variable del login si esta mal o bien clvaes o usuario
+
 </script>
 </head>
 <body>
@@ -68,6 +73,8 @@ Usuario:
 		<input type="button" name="send" value="Enviar" onclick="compruebayenvia();"/>
 </td></tr></table>
 </form>
+
+<%=incorrect %> <!-- printeamos el mensaje si esta mal claves o usuario -->
 	</main>
 	
 	<footer>

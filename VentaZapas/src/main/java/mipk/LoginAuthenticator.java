@@ -1,6 +1,8 @@
 package mipk;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,8 +15,7 @@ import jakarta.servlet.http.HttpSession;
  */
 public class LoginAuthenticator extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private String usuvalido = "admin";
-	private String pwdvalida = "1357";
+	
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -40,17 +41,32 @@ public class LoginAuthenticator extends HttpServlet {
 		if (usuario == null) usuario="";
 		if (pass == null) pass="";
 		boolean ok=false;
-		
-		if(usuario.equals(usuvalido) && pass.equals(pwdvalida)) {
-			session.setAttribute("attributo2",usuario);
-			session.setAttribute("attributo1","1");
-			ok=true;
+		//para conectar con la bbdd
+		try {
+			db.conectarBD();
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		//para meter los usuarios 
+		String query="select * from usuarios where nombre_usuario="+usuario + " and password="+pass;
+		try {
+			String [][] usuarios=db.resConsultaSelectA3(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		db.desconectarBD();
+		
 				
 		if (ok) response.sendRedirect("principal.jsp");
-		else response.sendRedirect("cerrarsesion.jsp");
+		else response.sendRedirect("index.jsp?var=Usuario y/o contraseña incorrectas.");
+			
+		
+			
 
 	}
+
 
 
 }

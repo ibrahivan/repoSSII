@@ -43,7 +43,7 @@
 			<h3>Zapatillas elegantes para mujer</h3>
 			<p>Perfectas para vestir con un traje o un vestido, pero también se pueden usar con pantalones vaqueros para dar un toque casual.</p>
 			
-		</div>
+		</div> 
 	</main>
 	
 	<footer>
