@@ -28,7 +28,7 @@ public class beanDB {
 	        }
 	    	catch (SQLException e){
 	    		System.out.println("Excepcion, en metodo DesconectarBD: " + e.getMessage());
-	    	}
+	    	} 
 	    }
 
 
